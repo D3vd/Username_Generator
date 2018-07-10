@@ -1,4 +1,6 @@
 import requests
+import string
+import random
 
 
 def get_names():
@@ -9,7 +11,6 @@ def get_names():
     skip_list = ['Iran', 'China', 'Russia', 'Armenia', 'Azerbaijan', 'Bulgaria', 'Egypt', 'Georgia', 'Greece', 'Israel', 'Japan', 'Korea', 'Saudi Arabia', 'Ukraine', 'Vietnam']
 
     if response['region'] in skip_list:
-        print('Skipped {}'.format(response['region']))
         name, surname = get_names()
         return name, surname
 
@@ -19,5 +20,33 @@ def get_names():
     return name, surname
 
 
-n, s = get_names()
-print('{} {}'.format(n, s))
+def create_username():
+
+    first_name, last_name = get_names()
+
+    return number_last(first_name, last_name), number_mid(first_name, last_name)
+
+
+def number_last(first_name, last_name):
+
+    username = ''
+    n = random.choice(range(1, 4))
+    username += first_name[0]
+    username += last_name
+    username += ''.join(random.choice(string.digits) for _ in range(n))
+
+    return username
+
+
+def number_mid(first_name, last_name):
+
+    username = ''
+    n = random.choice(range(1, 4))
+    username += first_name
+    username += ''.join(random.choice(string.digits) for _ in range(n))
+    username += last_name
+
+    return username
+
+
+print(create_username())
