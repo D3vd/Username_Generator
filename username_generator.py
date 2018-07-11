@@ -24,18 +24,23 @@ def create_username():
 
     first_name, last_name = get_names()
 
-    return number_last(first_name, last_name), number_mid(first_name, last_name)
+    op = random.choice(range(2))
+
+    if op == 0:
+        return number_last(first_name, last_name)
+    if op == 1:
+        return number_mid(first_name, last_name)
 
 
 def number_last(first_name, last_name):
 
     username = ''
     n = random.choice(range(1, 4))
-    username += first_name[0]
+    username += first_name[0].lower()
     username += last_name
     username += ''.join(random.choice(string.digits) for _ in range(n))
 
-    return username
+    return username.replace(' ', '')
 
 
 def number_mid(first_name, last_name):
@@ -46,7 +51,7 @@ def number_mid(first_name, last_name):
     username += ''.join(random.choice(string.digits) for _ in range(n))
     username += last_name
 
-    return username
+    return username.replace(' ', '')
 
 
 print(create_username())
