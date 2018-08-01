@@ -1,1 +1,1 @@
-# Username_Generator
+# Username GeneratorSimple python program that returns a random username that is generated using a name retrieved from [uinames.com](https://uinames.com/).##Usage

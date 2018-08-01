@@ -45,6 +45,7 @@ def last_name_number(last_name):
 
     return username.replace(' ', '')
 
+
 def first_name_number(first_name):
 
     username = ''
@@ -75,6 +76,3 @@ def number_mid(first_name, last_name):
     username += last_name
 
     return username.replace(' ', '')
-
-
-print(create_username())
